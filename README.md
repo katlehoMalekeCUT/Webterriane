@@ -1,10 +1,115 @@
-# WebTerriane — Foundation
+# WebTerriane
 
-This is the foundation layer from our whiteboard session: data model, DB context,
-and the file storage abstraction (the riskiest piece — Blob Storage vs local disk).
-Not a full build; it's the skeleton everything else attaches to.
+WebTerriane is a website for a student accommodation agency (currently modeled around
+Bloemfontein, near **Central University of Technology** & University of the Free State).
+Students browse verified residences, compare rent and distance from campus, and submit
+an application online — no account or login needed. This document covers what's built
+on the pages, layout, look and feel, and interactive bits.
 
-## What's here
+## Pages that exist right now
+
+| Page | Route | What it's for |
+|---|---|---|
+| Home | `/` | Landing page — hero search, featured properties, why-us, stats, testimonials, how-it-works, call to action |
+| Accommodation | `/Accommodation` | Listing page (currently a blank stub — search filters from the homepage will land here) |
+| Apply Now | `/Application/Apply` | Application form |
+| About | `/Home/About` | Stub page |
+| FAQ | `/Home/Faq` | Stub page |
+| Contact | `/Home/Contact` | Stub page |
+| Privacy | `/Home/Privacy` | Stub page |
+
+Only the **Home** page has real content and design applied so far — it's the design
+reference the rest of the site will follow. Everything else is a working link that
+loads an empty page.
+
+## Every page shares one layout
+
+All public pages wrap around a single shared layout, so the navbar, footer, and
+WhatsApp button appear everywhere automatically:
+
+- **Sticky navbar** — logo mark, links to Home / Accommodation / About / FAQ /
+  Contact, and an "Apply Now" button. Gains a soft shadow once you scroll past
+  the top of the page. Collapses into a hamburger menu on mobile.
+- **Footer** — brand blurb + social icons, an "Explore" link column, a "Legal"
+  link column, and a "Get in touch" block with address/email/phone.
+- **Floating WhatsApp button** — bottom corner, links out to a WhatsApp chat.
+
+## Home page, section by section
+
+1. **Hero** — Big headline over a background image, with a short pitch line, and
+   the signature piece: a search box styled like a **boarding pass / ticket**
+   (complete with notched corners and a dashed perforation line). Fields: university,
+   area, move-in date, max rent — submits to the Accommodation listing page.
+2. **Featured properties** — A 3-up grid of property cards (image, name, area,
+   distance from campus, rent per month, a "Details" and an "Apply" button, plus a
+   badge showing rooms left). Currently shows 3 hardcoded example listings
+   (Kovsie Heights, The Willows Residence, CBD Student Lofts) as placeholders for
+   what real data will look like.
+3. **Why WebTerriane** — Three feature callouts with icons: every listing is
+   physically inspected, distance-to-campus is measured (not estimated), and the
+   application is a single form with no account required.
+4. **Stats strip** — Four numbers that count up when scrolled into view: residences
+   listed, applications processed, occupancy rate, universities covered.
+5. **Testimonials** — Three student quotes in card form, each with a name and
+   university.
+6. **How it works** — A simple 3-step strip (Search & compare → Apply online →
+   Get your reference number), connected with a line between steps.
+7. **Closing call to action** — One more prompt to start an application, on a
+   solid-color banner.
+
+## Look and feel
+
+- **Colors** — Deep navy as the primary brand color, a bright sky blue as the
+  accent, warm amber used sparingly, and a soft off-white "paper" tone that
+  alternates with white between sections for visual rhythm.
+- **Type** — Three fonts working together on purpose:
+  - **Fraunces** (a serif with character) for all headings — gives the brand a
+    slightly editorial, non-corporate feel.
+  - **Inter** for all body copy and UI text — clean and easy to read.
+  - **IBM Plex Mono** specifically for numbers — rent prices, distances, stats,
+    and step numbers — so figures visually stand out as *data* against the prose.
+- **Shape language** — Rounded corners throughout (cards, buttons, the navbar
+  logo mark), soft drop shadows rather than hard borders, generous white space.
+- **Icons** — Font Awesome throughout (location pin, shield, route, envelope,
+  WhatsApp, social icons, etc.).
+- **Built on Bootstrap 5** for the grid and responsive behavior, with a custom
+  stylesheet layered on top for all the WebTerriane-specific styling — so it's
+  responsive out of the box (navbar collapses to a hamburger, cards restack
+  on mobile) without extra custom breakpoint work.
+
+## The small interactive touches (site.js)
+
+Two things happen in the browser right now, both intentionally lightweight:
+
+- The **navbar shadow** appears once you've scrolled a little way down the page,
+  so it visually lifts off the content beneath it.
+- The **stats numbers count up from 0** the moment they scroll into view, rather
+  than just appearing — done in a way that respects a visitor's "reduce motion"
+  accessibility setting (it just shows the final number instantly for them
+  instead of animating).
+
+## What's placeholder vs. real
+
+- All property listings, testimonials, and stats on the homepage are **hardcoded
+  example content** standing in for what will eventually come from the database —
+  useful for judging the design, not real inventory yet.
+- The property photos are temporary stock images.
+- Accommodation (listings) and Apply Now (application form) pages exist as
+  routes/links but have no content or layout yet — they're next in line to get
+  the same design treatment as the homepage.
+- About, FAQ, Contact, and Privacy are placeholder pages with nothing on them yet.
+
+## Where things live
+
+```
+wwwroot/
+├── css/site.css     ← all custom styling: colors, fonts, every .wt- component class
+└── js/site.js       ← navbar shadow + animated stat counters
+
+Views/
+├── Shared/_Layout.cshtml   ← navbar, footer, WhatsApp button (shared by every page)
+└── Home/Index.cshtml       ← the homepage itself, section by section
+```
 
 ```
 WebTerriane/
