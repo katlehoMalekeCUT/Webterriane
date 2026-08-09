@@ -1,0 +1,234 @@
+@{
+    ViewData["Title"] = "Student Accommodation, Verified";
+    // NOTE: all data below is hardcoded for the design pass. Once
+    // PropertyService/TestimonialService exist, this becomes:
+    //   @model HomeViewModel  (FeaturedProperties, Testimonials, Stats from DB)
+}
+
+<!-- ============ HERO ============ -->
+<section class="wt-hero">
+    <div class="wt-hero-bg"></div>
+    <div class="container wt-hero-inner">
+        <div class="wt-hero-copy">
+            <span class="wt-eyebrow">Verified accommodation &middot; 4 universities &middot; 40+ residences</span>
+            <h1 class="wt-hero-title">Your next room<br>is <em>already</em> booked<br>in your favour.</h1>
+            <p class="wt-hero-sub">Browse our student residences near your campus, compare rent and distance side by side, and apply online in minutes &mdash; no account, no waiting room.</p>
+        </div>
+
+        <!-- SIGNATURE ELEMENT: boarding-pass style search -->
+        <form class="wt-ticket" asp-controller="Accommodation" asp-action="Index" method="get">
+            <div class="wt-ticket-notch wt-ticket-notch-left"></div>
+            <div class="wt-ticket-notch wt-ticket-notch-right"></div>
+
+            <div class="wt-ticket-field">
+                <label>University</label>
+                <select name="university" class="wt-ticket-select">
+                    <option value="">Any university/Gollege</option>
+                    <option>University of the Free State</option>
+                    <option>Central University of Technology</option>
+                    <option>Motheo TVET </option>   
+                </select>
+            </div>
+
+            <div class="wt-ticket-field">
+                <label>Area</label>
+                <select name="area" class="wt-ticket-select">
+                    <option value="">Any area</option>
+                    <option>Bloemfontein CBD</option>
+                    <option>Universitas</option>
+                    <option>Willows</option>
+                </select>
+            </div>
+
+            <div class="wt-ticket-perforation" aria-hidden="true"></div>
+
+            <div class="wt-ticket-field">
+                <label>Move-in date</label>
+                <input type="date" name="moveIn" class="wt-ticket-input" />
+            </div>
+
+            <div class="wt-ticket-field wt-ticket-field-narrow">
+                <label>Max /month</label>
+                <input type="number" name="maxPrice" class="wt-ticket-input" placeholder="R 5,000" />
+            </div>
+
+            <button type="submit" class="wt-ticket-submit">
+                Search <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </form>
+    </div>
+</section>
+
+<!-- ============ FEATURED PROPERTIES ============ -->
+<section class="wt-section">
+    <div class="container">
+        <div class="wt-section-head">
+            <span class="wt-eyebrow wt-eyebrow-dark">Featured this intake</span>
+            <h2 class="wt-section-title">Rooms students actually recommend</h2>
+        </div>
+
+        <div class="row g-4">
+            @{
+                var featured = new[]
+                {
+                    new { Name = "Eureka", Area = "Willows", Distance = "0.1", Rent = "3 250", Rooms = 6, Img = "/images/Listings/eureka.jpg" },
+                    new { Name = "Soete Inval", Area = "Willows", Distance = "2.4", Rent = "2 800", Rooms = 3, Img = "/images/Listings/Soete-inval.jpg" },
+                    new { Name = "Sonelca Res", Area = "Willows", Distance = "2.1", Rent = "3 900", Rooms = 9, Img = "/images/Listings/Sonelca.jpg" }
+                };
+            }
+            @foreach (var p in featured)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <article class="wt-card">
+                        <div class="wt-card-img" style="background-image:url('@p.Img')">
+                            <span class="wt-badge">@p.Rooms rooms left</span>
+                        </div>
+                        <div class="wt-card-body">
+                            <h3 class="wt-card-title">@p.Name</h3>
+                            <p class="wt-card-meta"><i class="fa-solid fa-location-dot"></i> @p.Area &middot; <span class="wt-mono">@p.Distance km</span> from campus</p>
+                            <div class="wt-card-footer">
+                                <span class="wt-price"><span class="wt-mono">R@(p.Rent)</span> / month</span>
+                                <div class="wt-card-actions">
+                                    <a href="#" class="wt-btn wt-btn-ghost-sm">Details</a>
+                                    <a asp-controller="Application" asp-action="Apply" class="wt-btn wt-btn-primary-sm">Apply</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            }
+        </div>
+
+        <div class="text-center mt-5">
+            <a asp-controller="Accommodation" asp-action="Index" class="wt-btn wt-btn-outline">View all accommodation</a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ WHY CHOOSE US ============ -->
+<section class="wt-section wt-section-paper">
+    <div class="container">
+        <div class="wt-section-head">
+            <span class="wt-eyebrow wt-eyebrow-dark">Why WebTerriane</span>
+            <h2 class="wt-section-title">Built around one thing: verified rooms</h2>
+        </div>
+
+        <div class="row g-4">
+            @{
+                var reasons = new[]
+                {
+                    ("fa-solid fa-shield-halved", "Every listing inspected", "No stock photos passed off as reality \u2014 we visit and photograph every residence ourselves."),
+                    ("fa-solid fa-route", "Distance you can trust", "Walking distance to campus, measured, not estimated \u2014 shown on every listing."),
+                    ("fa-solid fa-file-signature", "Apply once, done", "One form, uploaded once, sent straight to the residence \u2014 no student account required.")
+                };
+            }
+            @foreach (var (icon, title, body) in reasons)
+            {
+                <div class="col-md-4">
+                    <div class="wt-reason">
+                        <div class="wt-reason-icon"><i class="@icon"></i></div>
+                        <h4>@title</h4>
+                        <p>@body</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="wt-stats">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-6 col-md-3">
+                <div class="wt-stat-num" data-count="42">0</div>
+                <div class="wt-stat-label">Residences listed</div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="wt-stat-num" data-count="1280">0</div>
+                <div class="wt-stat-label">Applications processed</div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="wt-stat-num" data-count="96">0</div>
+                <div class="wt-stat-label">Occupancy rate %</div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="wt-stat-num" data-count="4">0</div>
+                <div class="wt-stat-label">Universities covered</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="wt-section">
+    <div class="container">
+        <div class="wt-section-head">
+            <span class="wt-eyebrow wt-eyebrow-dark">From students</span>
+            <h2 class="wt-section-title">What moving in actually felt like</h2>
+        </div>
+
+        <div class="row g-4">
+            @{
+                var testimonials = new[]
+                {
+                    ("Lerato M.", "University of the Free State", "Applied on a Sunday night, got my reference number instantly, heard back before my next lecture."),
+                    ("Tumi K.", "Central University of Technology", "The distance-from-campus number was exact \u2014 first time a listing wasn't exaggerating."),
+                    ("Sipho N.", "University of the Free State", "No account, no password to forget \u2014 just filled in the form and uploaded my documents.")
+                };
+            }
+            @foreach (var (name, uni, quote) in testimonials)
+            {
+                <div class="col-md-4">
+                    <div class="wt-testimonial">
+                        <i class="fa-solid fa-quote-left wt-quote-icon"></i>
+                        <p>&ldquo;@quote&rdquo;</p>
+                        <div class="wt-testimonial-author">
+                            <strong>@name</strong>
+                            <span>@uni</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="wt-section wt-section-paper">
+    <div class="container">
+        <div class="wt-section-head">
+            <span class="wt-eyebrow wt-eyebrow-dark">How it works</span>
+            <h2 class="wt-section-title">Three steps, no login required</h2>
+        </div>
+
+        <div class="wt-steps">
+            <div class="wt-step">
+                <span class="wt-step-num wt-mono">01</span>
+                <h4>Search &amp; compare</h4>
+                <p>Filter by university, area, price and move-in date.</p>
+            </div>
+            <div class="wt-step-line"></div>
+            <div class="wt-step">
+                <span class="wt-step-num wt-mono">02</span>
+                <h4>Apply online</h4>
+                <p>Fill in one form, upload your documents, accept the declaration.</p>
+            </div>
+            <div class="wt-step-line"></div>
+            <div class="wt-step">
+                <span class="wt-step-num wt-mono">03</span>
+                <h4>Get your reference</h4>
+                <p>Instant reference number and confirmation email &mdash; track your status by email.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="wt-cta">
+    <div class="container wt-cta-inner">
+        <h2>Found a room you like?</h2>
+        <p>Applications take under five minutes and don't require an account.</p>
+        <a asp-controller="Application" asp-action="Apply" class="wt-btn wt-btn-light">Start your application</a>
+    </div>
+</section>

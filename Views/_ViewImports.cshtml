@@ -1,0 +1,8 @@
+@* 
+  Without this file, tag helpers like asp-controller="Home" asp-action="Index"
+  in _Layout.cshtml and Index.cshtml render as literal, non-functional HTML
+  attributes instead of generating real hrefs — links break silently.
+*@
+@using WebTerriane
+@using WebTerriane.Models
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

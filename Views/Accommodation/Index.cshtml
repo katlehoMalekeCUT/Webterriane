@@ -1,0 +1,46 @@
+@model List<WebTerriane.Models.Listing>
+@{
+    ViewData["Title"] = "Accommodation";
+}
+
+<section class="wt-contact-hero py-5">
+    <div class="container">
+        <h1 class="mb-3">Accommodation</h1>
+        <p class="wt-lead">Verified student residences, close to campus and ready to move into.</p>
+    </div>
+</section>
+
+<section class="container py-5">
+    @if (!Model.Any())
+    {
+        <p>No listings available right now — check back soon.</p>
+    }
+    else
+    {
+        <div class="row g-4">
+            @foreach (var listing in Model)
+            {
+                <div class="col-md-6 col-lg-4">
+                    <div class="wt-listing-card h-100 d-flex flex-column">
+                        <div class="wt-listing-card-body flex-grow-1">
+                            <h5>@listing.Title</h5>
+                            <p class="text-muted mb-1">
+                                <i class="fa-solid fa-location-dot"></i> @listing.Location
+                            </p>
+                            <p class="wt-listing-price">
+                                R@(listing.MonthlyPrice.ToString("N0")) <span class="text-muted">/ month</span>
+                            </p>
+
+                        </div>
+                        <div class="wt-listing-card-footer">
+                            <a class="wt-btn wt-btn-primary w-100" asp-controller="Application" asp-action="Apply"
+                               asp-route-listingId="@listing.Id">
+                                Apply Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</section>

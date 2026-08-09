@@ -1,0 +1,86 @@
+@model WebTerriane.Models.ApplicationFormModel
+@{
+    ViewData["Title"] = "Apply Now";
+    var listing = ViewBag.Listing as WebTerriane.Models.Listing;
+}
+
+<section class="wt-contact-hero py-5">
+    <div class="container">
+        <h1 class="mb-3">Apply Now</h1>
+        @if (listing != null)
+        {
+            <p class="wt-lead">
+    You're applying for <strong>@listing.Title</strong> &mdash; @listing.Location,
+    R@(listing.MonthlyPrice.ToString("N0")) / month.
+</p>
+        }
+        else
+        {
+            <p class="wt-lead">
+                Please choose a listing from the <a asp-controller="Accommodation" asp-action="Index">Accommodation</a> page to apply.
+            </p>
+        }
+    </div>
+</section>
+
+<section class="container py-5">
+
+    @if (ViewData["Success"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            Your application has been submitted. Our team will be in touch shortly.
+        </div>
+    }
+    else if (listing != null || Model.ListingId > 0)
+    {
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <form asp-controller="Application" asp-action="Apply" method="post" class="wt-contact-form">
+            <input type="hidden" asp-for="ListingId" />
+            <input type="hidden" asp-for="ListingTitle" />
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label asp-for="FullName" class="form-label">Full name</label>
+                    <input asp-for="FullName" class="form-control" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Email" class="form-label">Email address</label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Phone" class="form-label">Phone number</label>
+                    <input asp-for="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="StudentNumber" class="form-label">Student number</label>
+                    <input asp-for="StudentNumber" class="form-control" />
+                    <span asp-validation-for="StudentNumber" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Institution" class="form-label">Institution / University</label>
+                    <input asp-for="Institution" class="form-control" />
+                    <span asp-validation-for="Institution" class="text-danger"></span>
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="MoveInDate" class="form-label">Preferred move-in date</label>
+                    <input asp-for="MoveInDate" type="date" class="form-control" />
+                    <span asp-validation-for="MoveInDate" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <label asp-for="AdditionalInfo" class="form-label">Anything else we should know? <span class="text-muted">(optional)</span></label>
+                    <textarea asp-for="AdditionalInfo" class="form-control" rows="4"></textarea>
+                    <span asp-validation-for="AdditionalInfo" class="text-danger"></span>
+                </div>
+                <div class="col-12">
+                    <button type="submit" class="wt-btn wt-btn-primary">Submit Application</button>
+                </div>
+            </div>
+        </form>
+    }
+
+</section>
+

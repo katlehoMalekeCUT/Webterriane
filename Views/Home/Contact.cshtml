@@ -1,0 +1,108 @@
+@model WebTerriane.Models.ContactFormModel
+@{
+    ViewData["Title"] = "Contact";
+    ViewData["MetaDescription"] = "Get in touch with the WebTerriane team about student accommodation, applications, or general enquiries.";
+}
+
+<section class="wt-contact-hero py-5">
+    <div class="container">
+        <h1 class="mb-3">Contact Us</h1>
+        <p class="wt-lead">
+            Have a question about a listing, your application, or something else?
+            Reach out — we usually reply within a business day.
+        </p>
+    </div>
+</section>
+
+<section class="container py-5">
+    <div class="row g-5">
+
+        <!-- Contact form -->
+        <div class="col-lg-7">
+            <form asp-controller="Home" asp-action="Contact" method="post" class="wt-contact-form">
+                @if (ViewData["Success"] != null)
+                {
+                    <div class="alert alert-success" role="alert">
+                        Thanks — your message has been sent. We'll be in touch shortly.
+                    </div>
+                }
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="fullName" class="form-label">Full name</label>
+                        <input type="text" class="form-control" id="fullName" name="FullName" required />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" name="Email" required />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="phone" class="form-label">Phone number <span class="text-muted">(optional)</span></label>
+                        <input type="tel" class="form-control" id="phone" name="Phone" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="subject" class="form-label">Subject</label>
+                        <select class="form-select" id="subject" name="Subject">
+                            <option selected>General enquiry</option>
+                            <option>Application support</option>
+                            <option>Listing / accommodation question</option>
+                            <option>Landlord / property partnership</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" name="Message" rows="5" required></textarea>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="wt-btn wt-btn-primary">
+                            Send Message
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Contact details -->
+        <div class="col-lg-5">
+            <div class="wt-contact-info">
+                <div class="wt-contact-info-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <h6>Office</h6>
+                        <p>Bloemfontein, South Africa</p>
+                    </div>
+                </div>
+                <div class="wt-contact-info-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <h6>Email</h6>
+                        <p><a href="mailto:hello@webterriane.co.za">hello@webterriane.co.za</a></p>
+                    </div>
+                </div>
+                <div class="wt-contact-info-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <h6>Phone</h6>
+                        <p><a href="tel:+2700000000">+27 00 000 0000</a></p>
+                    </div>
+                </div>
+                <div class="wt-contact-info-item">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <div>
+                        <h6>WhatsApp</h6>
+                        <p><a href="https://wa.me/27000000000" target="_blank" rel="noopener">Chat with us</a></p>
+                    </div>
+                </div>
+                <div class="wt-contact-info-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <div>
+                        <h6>Support hours</h6>
+                        <p>Mon&ndash;Fri, 08:00&ndash;17:00 (SAST)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

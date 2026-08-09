@@ -1,0 +1,113 @@
+@* 
+  Shared layout for the entire public site.
+  Admin area (Areas/Admin) uses its own _AdminLayout.cshtml — not this one —
+  since the dashboard needs a sidebar, not a marketing nav.
+*@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - WebTerriane</title>
+    <meta name="description" content="@(ViewData["MetaDescription"] ?? "Student accommodation, verified and ready to move into.")" />
+
+    <!-- Fonts: Fraunces (display) / Inter (body) / IBM Plex Mono (numbers, prices, distances) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+
+    <nav class="wt-navbar" id="wtNavbar">
+        <div class="container wt-navbar-inner">
+            <a class="wt-brand" asp-controller="Home" asp-action="Index">
+                 <img src="~/images/logo_transparent.png" alt="WebTerriane" class="wt-brand-mark-img" />
+                <span class="wt-brand-text">WebTerriane</span>
+            </a>
+
+            <button class="wt-nav-toggle d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#wtNavLinks" aria-label="Toggle navigation">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse d-lg-flex justify-content-lg-end" id="wtNavLinks">
+                <ul class="wt-nav-links">
+                    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-controller="Accommodation" asp-action="Index">Accommodation</a></li>
+                    <li><a asp-controller="Home" asp-action="About">About</a></li>
+                    <li><a asp-controller="Home" asp-action="Faq">FAQ</a></li>
+                    <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
+                </ul>
+                <a class="wt-btn wt-btn-primary wt-nav-cta" asp-controller="Application" asp-action="Apply">Apply Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="wt-footer">
+        <div class="container">
+            <div class="wt-footer-grid">
+                <div class="wt-footer-brand">
+                    <a class="wt-brand wt-brand-light" asp-controller="Home" asp-action="Index">
+                        <img src="~/images/logo_transparent.png" alt="WebTerriane" class="wt-brand-mark-img" />
+                        <span class="wt-brand-text">WebTerriane</span>
+                    </a>
+                    <p>Verified student accommodation, close to campus, ready to move into.</p>
+                    <div class="wt-social">
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                    </div>
+                </div>
+
+                <div class="wt-footer-col">
+                    <h6>Explore</h6>
+                    <ul>
+                        <li><a asp-controller="Accommodation" asp-action="Index">Accommodation</a></li>
+                        <li><a asp-controller="Home" asp-action="About">About Us</a></li>
+                        <li><a asp-controller="Home" asp-action="Faq">FAQ</a></li>
+                        <li><a asp-controller="Application" asp-action="Apply">Apply Now</a></li>
+                    </ul>
+                </div>
+
+                <div class="wt-footer-col">
+                    <h6>Legal</h6>
+                    <ul>
+                        <li><a asp-controller="Home" asp-action="Privacy">Privacy Policy</a></li>
+                        <li><a asp-controller="Home" asp-action="Contact">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="wt-footer-col">
+                    <h6>Get in touch</h6>
+                    <ul class="wt-footer-contact">
+                        <li><i class="fa-solid fa-location-dot"></i> Willows, Bloemfontein, South Africa</li>
+                        <li><i class="fa-solid fa-envelope"></i> info.webterriane@gmail.com</li>
+                        <li><i class="fa-solid fa-phone"></i> +27 75 238 6065 </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="wt-footer-bottom">
+                <span>&copy; @DateTime.Now.Year WebTerriane. All rights reserved.</span>
+                <span>Built for accommodation providers, universities &amp; landlords. </span>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/27752386065" class="wt-whatsapp-btn" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
