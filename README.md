@@ -65,4 +65,4 @@ Azure.Storage.Blobs
 6. EF Core migration + seed script (first admin account, default `SiteSetting` rows)
 7. Bicep template for per-client provisioning (App Service, SQL DB, 2 blob containers, Key Vault)
 
-Tell me which of these to build next.
+
