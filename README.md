@@ -181,6 +181,12 @@ Azure.Storage.Blobs
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/a0f649e9-76ac-4f5d-b353-eca16424f6e8" />
 <img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/4d2ba303-f333-4baf-876e-f3b42dcbe3e3" />
 
+## Whatsapp icon
+when **clicked**
+<img width="1354" height="564" alt="image" src="https://github.com/user-attachments/assets/0a6520f0-701d-460b-91a4-1ef7dad732d4" />
+
+
+
 ## About Webterriane
 <img width="430" height="430" alt="image" src="https://github.com/user-attachments/assets/a9ee4fe3-cd78-414a-9e2c-07f9d7a070f5" />
 <img width="383" height="491" alt="image" src="https://github.com/user-attachments/assets/e9f9a86f-7776-4eaf-a009-61e7dcd57d70" />
