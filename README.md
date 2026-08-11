@@ -11,12 +11,12 @@ on the pages, layout, look and feel, and interactive bits.
 | Page | Route | What it's for |
 |---|---|---|
 | Home | `/` | Landing page — hero search, featured properties, why-us, stats, testimonials, how-it-works, call to action |
-| Accommodation | `/Accommodation` | Listing page (currently a blank stub — search filters from the homepage will land here) |
+| Accommodation | `/Accommodation` | Listing page (search filters from the homepage will land here) |
 | Apply Now | `/Application/Apply` | Application form |
-| About | `/Home/About` | Stub page |
-| FAQ | `/Home/Faq` | Stub page |
-| Contact | `/Home/Contact` | Stub page |
-| Privacy | `/Home/Privacy` | Stub page |
+| About | `/Home/About` | About us |
+| FAQ | `/Home/Faq` | Asked question |
+| Contact | `/Home/Contact` | contact us |
+| Privacy | `/Home/Privacy` | Our privacy policy |
 
 Only the **Home** page has real content and design applied so far — it's the design
 reference the rest of the site will follow. Everything else is a working link that
@@ -169,5 +169,31 @@ Azure.Storage.Blobs
 5. Public controllers + Razor views (Home, Accommodation, Property Details, Apply Now)
 6. EF Core migration + seed script (first admin account, default `SiteSetting` rows)
 7. Bicep template for per-client provisioning (App Service, SQL DB, 2 blob containers, Key Vault)
+
+## Screenshots
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/1c50673c-6822-4de6-961b-b94a41b38066" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/68d88162-9ff5-4b72-b2ce-11da9ba0f88b" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/cd93df51-f8ef-4ca8-b5a9-1a512604689e" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/90aa3b4b-e13f-4049-8f0a-bf0cc0d429d2" />
+<img width="1366" height="1052" alt="image" src="https://github.com/user-attachments/assets/fd482437-a5cc-4598-ab05-e7dd04776b64" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/923449d8-2c98-479a-a614-730c3d79d869" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/26acab03-6936-4099-ac36-206b649040ee" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/a0f649e9-76ac-4f5d-b353-eca16424f6e8" />
+<img width="1366" height="768" alt="image" src="https://github.com/user-attachments/assets/4d2ba303-f333-4baf-876e-f3b42dcbe3e3" />
+
+## Whatsapp icon
+when **clicked**
+<img width="1354" height="564" alt="image" src="https://github.com/user-attachments/assets/0a6520f0-701d-460b-91a4-1ef7dad732d4" />
+
+
+
+## About Webterriane
+<img width="430" height="430" alt="image" src="https://github.com/user-attachments/assets/a9ee4fe3-cd78-414a-9e2c-07f9d7a070f5" />
+<img width="383" height="491" alt="image" src="https://github.com/user-attachments/assets/e9f9a86f-7776-4eaf-a009-61e7dcd57d70" />
+
+
+
+
+
 
 
