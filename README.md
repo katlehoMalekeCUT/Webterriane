@@ -187,13 +187,4 @@ when **clicked**
 
 
 
-## About Webterriane
-<img width="430" height="430" alt="image" src="https://github.com/user-attachments/assets/a9ee4fe3-cd78-414a-9e2c-07f9d7a070f5" />
-<img width="383" height="491" alt="image" src="https://github.com/user-attachments/assets/e9f9a86f-7776-4eaf-a009-61e7dcd57d70" />
-
-
-
-
-
-
 
